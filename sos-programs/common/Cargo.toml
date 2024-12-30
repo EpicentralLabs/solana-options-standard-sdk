@@ -1,12 +1,12 @@
 [package]
-name = "sos-programs"
+name = "common"
 version = "0.1.0"
-description = "Created with Anchor"
+description = "Common utilities and types for the Solana Option Programs"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "sos_programs"
+name = "common"
 
 [features]
 default = []
