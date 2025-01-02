@@ -1,3 +1,5 @@
+use anchor_lang::prelude::*;
+
 pub mod OptionDataTypes {
     pub struct OptionAccount {
         pub option_id: Pubkey,
@@ -31,5 +33,23 @@ pub mod OptionDataTypes {
         pub gamma: f64,
         pub vega: f64,
         pub rho: f64,
+    }
+}
+
+pub mod MarketDataTypes { // Module containing market-related data structures
+    pub struct TokenPrice { // Current price of the underlying token
+        pub token_price: f64,
+    }
+
+    pub struct TokenVolatility { // Volatility measure of the token price
+        pub token_volatility: f64,
+    }
+
+    pub struct TimeInYears { // Time duration in years
+        pub time_in_years: u64,
+    }
+
+    pub struct RiskFreeRate { // Annual risk-free interest rate of the underlying token
+        pub risk_free_rate: f64,
     }
 }
