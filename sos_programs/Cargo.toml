@@ -1,0 +1,14 @@
+[package]
+name = "sos_programs"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = [
+    "common",
+]
+
+[dependencies]
+anchor-lang = "0.30.1"
+statrs = "0.16"
+rust_decimal = "1.32"

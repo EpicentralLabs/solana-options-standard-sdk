@@ -16,7 +16,7 @@ pub mod OptionDataTypes {
     pub struct OptionParams { // An Account that stores the parameters of an option contract
         pub option_type: OptionType, // The type of option
         pub strike_price: f64, // The strike price of the option
-        pub initial_time_to_expiry: i64, // How much time is left until the option expires
+        pub initial_time_to_expiry: i64, // How much time is left until the option expires (set with blockchain timestamp)
         pub creation_price: f64, // Add initial price when option created
         pub greeks: OptionGreeks, // The greeks of the option
     }
@@ -42,7 +42,7 @@ pub mod TokenDataTypes { // Module containing token-related data structures
         pub spot_price: f64, // Current market price of the token
         pub historical_volatility: f64, // Historical price volatility of the token
         pub risk_free_rate: f64, // Risk-free interest rate for the token
-        pub timestamp: i64, // Current timestamp for the token data
+        pub timestamp: i64, // Current timestamp for the token data (set with blockchain timestamp)
     }
 }
 
