@@ -1,4 +1,5 @@
 use anchor_lang::prelude::*;
+use statrs::distribution::{ContinuousCDF, Normal};
 
 use common::types::{OptionDataTypes, MarketDataTypes};
 
@@ -41,7 +42,8 @@ pub mod black_scholes_model {
 
     /// Helper function for cumulative normal distribution
     fn normal_cdf(x: f64) -> f64 {
-        // TODO: Implement N(x) function
+        let normal = Normal::new(0.0, 1.0).unwrap();
+        normal.cdf(x)
     }
 
     /// Calculate d1 parameter for Black-Scholes

@@ -23,7 +23,9 @@ $d_+ = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r +
 
 $d_- = d_+ - \sigma\sqrt{T-t}$
 
-> Above is the two standardized normal variables used in the Black-Scholes formula.
+> Above is the two standardized normal variables used in the Black-Scholes formula. 
+>
+>They are crucial for the Black-Scholes model, as they are used to determine the option's price and its sensitivity to various factors.
 
 ## Notation:
 
