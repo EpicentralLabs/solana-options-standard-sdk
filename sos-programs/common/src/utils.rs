@@ -48,10 +48,6 @@ pub mod black_scholes_model {
 
     /// Calculate d1 parameter used in Black-Scholes formula:
     /// d₁ = [ln(S/K) + (r + σ²/2)τ] / (σ√τ)
-    /// where:
-    /// d₁ represents a standardized measure that helps determine 
-    /// the probability of option exercise, adjusted for the time value
-    /// of money and volatility risk premium
     fn calculate_d1(
         spot_price: f64,
         strike_price: f64,
@@ -66,10 +62,6 @@ pub mod black_scholes_model {
 
     /// Calculate d2 parameter for Black-Scholes
     /// d2 = d1 - σ√τ
-    /// where:
-    /// - d1 is the d1 parameter previously calculated
-    /// - σ is the volatility of the underlying asset
-    /// - τ is the time to expiry in years
     fn calculate_d2(
         d1: f64,
         volatility: f64,
