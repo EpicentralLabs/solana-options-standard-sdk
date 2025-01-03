@@ -1,4 +1,3 @@
-
 # Solana Options Standard
 
 An open source software/program development kit (SDK). Inside of the SDK, there are a few things that will be built and optimized over a course of time. More detailed documentation and descriptions written in [docs.epicentrallabs.com](https://docs.epicentrallabs.com/option-standard-sdk/introduction).
@@ -23,9 +22,39 @@ $d_+ = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r +
 
 $d_- = d_+ - \sigma\sqrt{T-t}$
 
-> Above is the two standardized normal variables used in the Black-Scholes formula. 
->
->They are crucial for the Black-Scholes model, as they are used to determine the option's price and its sensitivity to various factors.
+> Above are the two standardized normal variables used in the Black-Scholes formula. They are crucial for the Black-Scholes model, as they are used to determine the option's price and its sensitivity to various factors.
+
+### `d1` and `d2` Calculations
+
+The `d1` and `d2` parameters are integral components of the Black-Scholes option pricing model. These parameters are used to determine the theoretical price of options and their sensitivities to various market factors.
+
+#### `d1` Calculation
+
+The `d1` parameter is calculated using the following formula:
+
+\[ d_1 = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t)\right] \]
+
+- **Parameters**:
+  - `spot_price` (\( S_t \)): The current market price of the underlying asset.
+  - `strike_price` (\( K \)): The price at which the option can be exercised.
+  - `risk_free_rate` (\( r \)): The annualized risk-free interest rate.
+  - `volatility` (\( \sigma \)): The volatility of the underlying asset.
+  - `time_to_expiry` (\( T-t \)): The time remaining until the option's expiration, expressed in years.
+
+- **Purpose**: The `d1` parameter is a standardized measure that helps determine the probability of option exercise, adjusted for the time value of money and volatility risk premium.
+
+#### `d2` Calculation
+
+The `d2` parameter is calculated using the formula:
+
+\[ d_2 = d_1 - \sigma\sqrt{T-t} \]
+
+- **Parameters**:
+  - `d1`: The previously calculated `d1` parameter.
+  - `volatility` (\( \sigma \)): The volatility of the underlying asset.
+  - `time_to_expiry` (\( T-t \)): The time remaining until the option's expiration, expressed in years.
+
+- **Purpose**: The `d2` parameter is used alongside `d1` in the Black-Scholes formula to calculate the option's price. It represents the adjusted probability of the option expiring in-the-money.
 
 ## Notation:
 
