@@ -18,9 +18,9 @@ $P(S,t) = N(-d_+)Ke^{-r(T-t)} - N(-d_-)S_t$
 
 **Where:**
 
-$d_+ = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t)\right]$
+$d_1 = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t)\right]$
 
-$d_- = d_+ - \sigma\sqrt{T-t}$
+$d_2 = d_+ - \sigma\sqrt{T-t}$
 
 > Above are the two standardized normal variables used in the Black-Scholes formula. They are crucial for the Black-Scholes model, as they are used to determine the option's price and its sensitivity to various factors.
 
@@ -32,7 +32,7 @@ The `d1` and `d2` parameters are integral components of the Black-Scholes option
 
 The `d1` parameter is calculated using the following formula:
 
-\[ d_1 = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t)\right] \]
+$d_1 = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t)\right]$
 
 - **Parameters**:
   - `spot_price` (\( S_t \)): The current market price of the underlying asset.
@@ -47,7 +47,7 @@ The `d1` parameter is calculated using the following formula:
 
 The `d2` parameter is calculated using the formula:
 
-\[ d_2 = d_1 - \sigma\sqrt{T-t} \]
+$d_2 = d_1 - \sigma\sqrt{T-t}$
 
 - **Parameters**:
   - `d1`: The previously calculated `d1` parameter.

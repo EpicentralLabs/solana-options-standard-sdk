@@ -12,7 +12,33 @@ pub mod black_scholes_model {
         token_params: &TokenDataTypes::TokenParams,
         market_params: &MarketDataTypes::MarketParams,
     ) -> f64 {
-        // TODO: Implement Black-Scholes formula
+        let d1 = calculate_d1(
+            token_params.spot_price,
+            option_params.strike_price,
+            token_params.risk_free_rate,
+            token_params.historical_volatility,
+            calculate_time_to_expiry(option_params.initial_time_to_expiry, market_params.current_timestamp),
+        );
+
+        let d2 = calculate_d2(
+            d1,
+            token_params.historical_volatility,
+            calculate_time_to_expiry(option_params.initial_time_to_expiry, market_params.current_timestamp),
+        );
+
+        let normal = Normal::new(0.0, 1.0).unwrap();
+        let nd1 = normal.cdf(d1);
+        let nd2 = normal.cdf(d2);
+
+        match option_params.option_type {
+            OptionDataTypes::OptionType::LongCall => {
+                nd1 * token_params.spot_price - nd2 * option_params.strike_price * (-token_params.risk_free_rate * calculate_time_to_expiry(option_params.initial_time_to_expiry, market_params.current_timestamp)).exp()
+            }
+            OptionDataTypes::OptionType::LongPut => {
+                nd2 * option_params.strike_price * (-token_params.risk_free_rate * calculate_time_to_expiry(option_params.initial_time_to_expiry, market_params.current_timestamp)).exp() - nd1 * token_params.spot_price
+            }
+            _ => 0.0, // Handle other option types if necessary
+        }
     }
 
     /// Calculates time to expiry in years
