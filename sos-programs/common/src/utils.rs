@@ -5,7 +5,20 @@ use common::types::{OptionDataTypes, MarketDataTypes};
 
 pub mod black_scholes_model {
     pub mod standard_normal_variables {
-        // CALC
+        use super::*;
+
+        pub fn calc_d_plus(
+            // TODO
+        ) -> f64 {
+            // TODO
+        }
+
+        pub fn calc_d_minus(
+            // TODO
+        ) -> f64 {
+            // TODO
+        }
+    }
 
     pub mod greeks {
         use super::*;

@@ -36,20 +36,17 @@ pub mod OptionDataTypes {
     }
 }
 
-pub mod MarketDataTypes { // Module containing market-related data structures
-    pub struct TokenPrice { // Current price of the underlying token
+pub mod TokenDataTypes { // Module containing token-related data structures
+    pub struct TokenParams {
         pub token_price: f64,
-    }
-
-    pub struct TokenVolatility { // Volatility measure of the token price
         pub token_volatility: f64,
+        pub token_risk_free_rate: f64,
     }
 
-    pub struct TimeInYears { // Time duration in years
+pub mod MarketDataTypes {
+    pub struct MarketParams {
+        pub usdc_risk_free_rate: f64,
         pub time_in_years: u64,
-    }
-
-    pub struct RiskFreeRate { // Annual risk-free interest rate of the underlying token
-        pub risk_free_rate: f64,
+        pub time_until_expiry: u64,
     }
 }
