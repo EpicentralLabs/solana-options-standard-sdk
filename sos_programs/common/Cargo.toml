@@ -1,12 +1,13 @@
 [package]
-name = "sos-programs"
+name = "common"
 version = "0.1.0"
-description = "Created with Anchor"
+description = "Common utilities and types for the Solana Option Programs"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "sos_programs"
+name = "common"
+path = "src/lib.rs"
 
 [features]
 default = []
@@ -18,3 +19,8 @@ idl-build = ["anchor-lang/idl-build"]
 
 [dependencies]
 anchor-lang = "0.30.1"
+statrs = "0.16"
+rust_decimal = "1.32"
+
+[profile.release]
+overflow-checks = true
