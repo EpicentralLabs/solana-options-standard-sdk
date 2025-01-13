@@ -1,4 +1,3 @@
-//! Common utilities and types for the Solana Option Programs
+// STANDARD STRUCTURE FOR AN OPTION PROGRAM
 
-pub mod types;
-pub mod utils;
+use anchor_lang::prelude::*;

@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "sos_programs/common",
+    "sos_programs/option_create",
+    # Add other member crates here
+]
