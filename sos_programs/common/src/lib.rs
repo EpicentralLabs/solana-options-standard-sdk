@@ -1,3 +1,7 @@
-// STANDARD STRUCTURE FOR AN OPTION PROGRAM
+pub mod types;
+pub mod utils;
 
-use anchor_lang::prelude::*;
+// You can include other modules or re-exports here as needed
+
+pub use types::*;
+pub use utils::*;
