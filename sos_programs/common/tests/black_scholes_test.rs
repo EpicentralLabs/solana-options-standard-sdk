@@ -11,11 +11,11 @@ mod tests {
 
     // Common test parameters | CAN CHANGE CONSTANTS FOR TESTING
     const OPTION_TYPE: OptionType = OptionType::LongCall;
-    const STRIKE_PRICE: f64 = 200.0;
+    const STRIKE_PRICE: f64 = 100.0;
     const TIME_UNTIL_EXPIRY: i64 = 2_592_000; // 30 days in seconds
-    const SPOT_PRICE: f64 = 185.0;
-    const HISTORICAL_VOLATILITY: f64 = 0.3510;
-    const RISK_FREE_RATE: f64 = 0.0779;
+    const SPOT_PRICE: f64 = 100.0;
+    const HISTORICAL_VOLATILITY: f64 = 0.35;
+    const RISK_FREE_RATE: f64 = 0.08;
 
     fn create_test_params(
         option_type: OptionType,
