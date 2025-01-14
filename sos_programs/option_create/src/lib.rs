@@ -39,7 +39,7 @@ pub mod option_create {
         let option_params = OptionParams {
             option_type: option_input.option_type,
             strike_price: option_input.strike_price,
-            initial_time_to_expiry: option_input.expiry_timestamp,
+            time_until_expiry: option_input.expiry_timestamp,
             creation_price: 0.0, // Will be calculated
             greeks: OptionGreeks {
                 delta: 0.0,
