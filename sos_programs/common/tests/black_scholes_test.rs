@@ -13,12 +13,12 @@ mod tests {
     fn test_calc_option_price() {
         // Initialize your test data
         let option_params = OptionParams {
-            option_type: OptionType::LongCall,
-            strike_price: 300.0,
-            time_until_expiry: 31_536_000,
-            creation_price: 0.0,
+            option_type: OptionType::LongCall, // CAN CHANGE | Call option | Put Option: `OptionType::LongPut`
+            strike_price: 300.0, // CAN CHANGE |
+            time_until_expiry: 15_768_000, // CAN CHANGE| in seconds
+            creation_price: 0.0, // CAN CHANGE |in USD
             greeks: OptionGreeks {
-                delta: 0.0,
+                delta: 0.0, 
                 gamma: 0.0,
                 theta: 0.0,
                 vega: 0.0,
@@ -27,15 +27,15 @@ mod tests {
         };
 
         let token_params = TokenParams {
-            spot_price: 300.0,
-            historical_volatility: 0.2,
-            risk_free_rate: 0.05,
-            timestamp: 0,
+            spot_price: 300.0, // CAN CHANGE |
+            historical_volatility: 0.2, // CAN CHANGE |
+            risk_free_rate: 0.05, // CAN CHANGE |
+            timestamp: 0, // CAN CHANGE |
         };
 
         let market_params = MarketParams {
-            usdc_risk_free_rate: 0.05,
-            time_in_years: 1.0,
+            usdc_risk_free_rate: 0.0,
+            time_in_years: 0.0,
             current_timestamp: 0,
         };
 
