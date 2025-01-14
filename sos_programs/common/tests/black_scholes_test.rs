@@ -14,8 +14,8 @@ mod tests {
         // Initialize your test data
         let option_params = OptionParams {
             option_type: OptionType::LongCall,
-            strike_price: 100.0,
-            initial_time_to_expiry: 31_536_000,
+            strike_price: 300.0,
+            time_until_expiry: 31_536_000,
             creation_price: 0.0,
             greeks: OptionGreeks {
                 delta: 0.0,
@@ -27,7 +27,7 @@ mod tests {
         };
 
         let token_params = TokenParams {
-            spot_price: 100.0,
+            spot_price: 300.0,
             historical_volatility: 0.2,
             risk_free_rate: 0.05,
             timestamp: 0,
@@ -50,7 +50,7 @@ mod tests {
         let option_params = OptionParams {
             option_type: OptionType::LongCall,
             strike_price: 100.0,
-            initial_time_to_expiry: 31_536_000,
+            time_until_expiry: 31_536_000,
             creation_price: 0.0,
             greeks: OptionGreeks {
                 delta: 0.0,

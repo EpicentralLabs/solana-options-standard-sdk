@@ -13,12 +13,12 @@ pub fn validate_option_parameters(
 ) -> Result<()> {
     msg!("Validating expiry timestamp...");
     require!(
-        option_params.initial_time_to_expiry > market_params.current_timestamp,
+        option_params.time_until_expiry > market_params.current_timestamp,
         {
             msg!("Validation failed: Invalid expiry timestamp");
             OptionError::InvalidExpiryTimestamp {
                 expected: market_params.current_timestamp,
-                actual: option_params.initial_time_to_expiry
+                actual: option_params.time_until_expiry
             }
         }
     );
@@ -36,7 +36,7 @@ pub fn validate_option_parameters(
     );
 
     // Validate option duration
-    let duration = option_params.initial_time_to_expiry - market_params.current_timestamp;
+    let duration = option_params.time_until_expiry - market_params.current_timestamp;
     require!(
         duration >= MIN_OPTION_DURATION && duration <= MAX_OPTION_DURATION,
         OptionError::InvalidDuration

@@ -20,7 +20,7 @@ pub mod option_data_types {
     pub struct OptionParams {
         pub option_type: OptionType,
         pub strike_price: f64,
-        pub initial_time_to_expiry: i64,
+        pub time_until_expiry: i64,
         pub creation_price: f64,
         pub greeks: OptionGreeks,
     }

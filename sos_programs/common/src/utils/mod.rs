@@ -17,7 +17,7 @@ pub mod black_scholes_model {
         token_params: &TokenParams,
         market_params: &MarketParams,
     ) -> f64 {
-        let time_to_expiry = calc_time_to_expiry(option_params.initial_time_to_expiry, market_params.current_timestamp);
+        let time_to_expiry = calc_time_to_expiry(option_params.time_until_expiry, market_params.current_timestamp);
         let d1 = calc_d1(
             token_params.spot_price,
             option_params.strike_price,
@@ -55,7 +55,7 @@ pub mod black_scholes_model {
         token_params: &TokenParams,
         market_params: &MarketParams,
     ) -> OptionGreeks {
-        let time_to_expiry = calc_time_to_expiry(option_params.initial_time_to_expiry, market_params.current_timestamp);
+        let time_to_expiry = calc_time_to_expiry(option_params.time_until_expiry, market_params.current_timestamp);
         let d1 = calc_d1(
             token_params.spot_price,
             option_params.strike_price,
