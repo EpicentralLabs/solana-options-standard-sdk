@@ -10,7 +10,7 @@ pub mod option_data_types {
         pub option_params: OptionParams,
     }
 
-    #[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug)]
+    #[derive(Clone, Debug)]
     pub enum OptionStatus {
         Open,
         Expired,
@@ -25,7 +25,7 @@ pub mod option_data_types {
         pub greeks: OptionGreeks,
     }
 
-    #[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug)]
+    #[derive(Clone, Debug)]
     pub enum OptionType {
         LongCall,
         ShortCall,
