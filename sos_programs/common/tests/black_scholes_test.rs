@@ -9,48 +9,26 @@ use common::utils::black_scholes_model::{calc_greeks, calc_option_price};
 mod tests {
     use super::*;
 
-    #[test]
-    fn test_calc_option_price() {
-        // Initialize your test data
+    // Common test parameters | CAN CHANGE CONSTANTS FOR TESTING
+    const OPTION_TYPE: OptionType = OptionType::LongCall;
+    const STRIKE_PRICE: f64 = 200.0;
+    const TIME_UNTIL_EXPIRY: i64 = 2_592_000; // 30 days in seconds
+    const SPOT_PRICE: f64 = 185.0;
+    const HISTORICAL_VOLATILITY: f64 = 0.3510;
+    const RISK_FREE_RATE: f64 = 0.0779;
+
+    fn create_test_params(
+        option_type: OptionType,
+        strike: f64,
+        expiry: i64,
+        spot: f64,
+        volatility: f64,
+        rate: f64,
+    ) -> (OptionParams, TokenParams, MarketParams) {
         let option_params = OptionParams {
-            option_type: OptionType::LongCall, // CAN CHANGE | Call option | Put Option: `OptionType::LongPut`
-            strike_price: 300.0, // CAN CHANGE |
-            time_until_expiry: 15_768_000, // CAN CHANGE| in seconds
-            creation_price: 0.0, // CAN CHANGE |in USD
-            greeks: OptionGreeks {
-                delta: 0.0, 
-                gamma: 0.0,
-                theta: 0.0,
-                vega: 0.0,
-                rho: 0.0,
-            },
-        };
-
-        let token_params = TokenParams {
-            spot_price: 300.0, // CAN CHANGE |
-            historical_volatility: 0.2, // CAN CHANGE |
-            risk_free_rate: 0.05, // CAN CHANGE |
-            timestamp: 0, // CAN CHANGE |
-        };
-
-        let market_params = MarketParams {
-            usdc_risk_free_rate: 0.0,
-            time_in_years: 0.0,
-            current_timestamp: 0,
-        };
-
-        let price = calc_option_price(&option_params, &token_params, &market_params);
-        println!("Calculated Option Price: {}", price);
-        assert!(price > 0.0, "Option price should be greater than 0.0");
-    }
-
-    #[test]
-    fn test_calc_greeks() {
-        // Initialize your test data
-        let option_params = OptionParams {
-            option_type: OptionType::LongCall,
-            strike_price: 100.0,
-            time_until_expiry: 31_536_000,
+            option_type,
+            strike_price: strike,
+            time_until_expiry: expiry,
             creation_price: 0.0,
             greeks: OptionGreeks {
                 delta: 0.0,
@@ -62,17 +40,47 @@ mod tests {
         };
 
         let token_params = TokenParams {
-            spot_price: 100.0,
-            historical_volatility: 0.2,
-            risk_free_rate: 0.05,
+            spot_price: spot,
+            historical_volatility: volatility,
+            risk_free_rate: rate,
             timestamp: 0,
         };
 
         let market_params = MarketParams {
-            usdc_risk_free_rate: 0.05,
-            time_in_years: 1.0,
+            usdc_risk_free_rate: rate,
+            time_in_years: expiry as f64 / 31_536_000.0, // Convert i64 seconds to years
             current_timestamp: 0,
         };
+
+        (option_params, token_params, market_params)
+    }
+
+    #[test]
+    fn test_calc_option_price() {
+        let (option_params, token_params, market_params) = create_test_params(
+            OPTION_TYPE,
+            STRIKE_PRICE,
+            TIME_UNTIL_EXPIRY,
+            SPOT_PRICE,
+            HISTORICAL_VOLATILITY,
+            RISK_FREE_RATE,
+        );
+
+        let price = calc_option_price(&option_params, &token_params, &market_params);
+        println!("Calculated Option Price: {}", price);
+        assert!(price > 0.0, "Option price should be greater than 0.0");
+    }
+
+    #[test]
+    fn test_calc_greeks() {
+        let (option_params, token_params, market_params) = create_test_params(
+            OPTION_TYPE,
+            STRIKE_PRICE,
+            TIME_UNTIL_EXPIRY,
+            SPOT_PRICE,
+            HISTORICAL_VOLATILITY,
+            RISK_FREE_RATE,
+        );
 
         let greeks = calc_greeks(&option_params, &token_params, &market_params);
         println!("Calculated Greeks: {:?}", greeks);
