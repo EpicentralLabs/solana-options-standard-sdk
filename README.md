@@ -56,6 +56,14 @@ $d_2 = d_1 - \sigma\sqrt{T-t}$
 
 - **Purpose**: The `d2` parameter is used alongside `d1` in the Black-Scholes formula to calculate the option's price. It represents the adjusted probability of the option expiring in-the-money.
 
+$C(S,t) = N(d_+)S_t - N(d_-)Ke^{-r(T-t)}$
+
+Where:
+
+$d_+ = \frac{1}{\sigma\sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t)\right]$
+
+$d_- = d_+ - \sigma\sqrt{T-t}$
+
 ## Notation:
 
 ### **Market Related:**
@@ -85,6 +93,25 @@ $e$ = [Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant)) 
 $ln$ = is the natural logarithm.
 
 $N(x)$ = denotes the [standard normal](https://en.wikipedia.org/wiki/Normal_distribution#Standard_normal_distribution) [cumulative distribution function (CDF)](https://en.wikipedia.org/wiki/Cumulative_distribution_function):
+
+$t$ is a time in years; with $t = 0$ generally representing the present year.
+
+$r$ is the annualized "risk-free" interest rate, continuously compounded (APY).
+
+### **Option Related:**
+
+$V(S,t)$ is the current option price based on the asset price and time.
+
+$C(S,t)$ is the call option price and $P(S,t)$ is the put option price.
+
+$T$ is when the option expires.
+
+$\tau$ is time left until expiry ($T - t$).
+
+$K$ is the strike price (agreed price to buy/sell).
+
+$N(x)$ denotes the [standard normal](https://en.wikipedia.org/wiki/Normal_distribution#Standard_normal_distribution) [cumulative distribution function (CDF)](https://en.wikipedia.org/wiki/Cumulative_distribution_function):
+
 
 $N(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} e^{-z^2/2} dz.$
 
