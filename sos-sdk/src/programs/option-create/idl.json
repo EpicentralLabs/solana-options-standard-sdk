@@ -1,0 +1,203 @@
+{
+    "version": "0.1.0",
+    "name": "create_option",
+    "instructions": [
+        {
+            "name": "initializeOption",
+            "accounts": [
+                {
+                    "name": "optionAccount",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "owner",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "strikePrice",
+                    "type": "u64"
+                },
+                {
+                    "name": "optionType",
+                    "type": {
+                        "defined": "OptionType"
+                    }
+                },
+                {
+                    "name": "optionStatus",
+                    "type": {
+                        "defined": "OptionStatus"
+                    }
+                },
+                {
+                    "name": "expiration",
+                    "type": "i64"
+                },
+                {
+                    "name": "tokenMint",
+                    "type": "publicKey"
+                },
+                {
+                    "name": "quantity",
+                    "type": "u64"
+                },
+                {
+                    "name": "optionPrice",
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "exerciseOption",
+            "accounts": [
+                {
+                    "name": "optionAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "owner",
+                    "isMut": true,
+                    "isSigner": true
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "expireOption",
+            "accounts": [
+                {
+                    "name": "optionAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "owner",
+                    "isMut": true,
+                    "isSigner": true
+                }
+            ],
+            "args": []
+        }
+    ],
+    "accounts": [
+        {
+            "name": "OptionState",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "tokenMint",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "strikePrice",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "expiration",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "owner",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "optionType",
+                        "type": "u8"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "status",
+                        "type": "u8"
+                    },
+                    {
+                        "name": "quantity",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "optionPrice",
+                        "type": "u64"
+                    }
+                ]
+            }
+        }
+    ],
+    "types": [
+        {
+            "name": "OptionType",
+            "type": {
+                "kind": "enum",
+                "variants": [
+                    {
+                        "name": "Call"
+                    },
+                    {
+                        "name": "Put"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "OptionStatus",
+            "type": {
+                "kind": "enum",
+                "variants": [
+                    {
+                        "name": "Active"
+                    },
+                    {
+                        "name": "Exercised"
+                    },
+                    {
+                        "name": "Expired"
+                    }
+                ]
+            }
+        }
+    ],
+    "errors": [
+        {
+            "code": 6000,
+            "name": "InvalidExpiration",
+            "msg": "The expiration time is invalid. The option cannot expire in the past."
+        },
+        {
+            "code": 6001,
+            "name": "OptionNotActive",
+            "msg": "Option is not active."
+        },
+        {
+            "code": 6002,
+            "name": "OptionExpired",
+            "msg": "Option has expired."
+        },
+        {
+            "code": 6003,
+            "name": "UnauthorizedExercise",
+            "msg": "Unauthorized attempt to exercise option."
+        },
+        {
+            "code": 6004,
+            "name": "OptionNotExpired",
+            "msg": "Option has not yet expired."
+        },
+        {
+            "code": 6005,
+            "name": "OptionAlreadyExercised",
+            "msg": "Option has already been exercised."
+        }
+    ]
+}
