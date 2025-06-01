@@ -1,7 +1,7 @@
 {
   "license": "MIT",  
   "name": "sos-sdk",
-  "version": "0.1.0",
+  "version": "0.1.0-beta",
   "description": "Solana Options Standard SDK",
   "author": "Epicentral Labs, DAO LLC",
   "repository": {
