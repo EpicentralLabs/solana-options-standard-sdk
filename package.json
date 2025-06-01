@@ -6,12 +6,14 @@
   "author": "Epicentral Labs, DAO LLC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EpicentralLabs/solana-options-standard-sdk"
+    "url": "git+https://github.com/EpicentralLabs/solana-options-standard-sdk.git"
   },
   "bugs": {
     "url": "https://github.com/EpicentralLabs/solana-options-standard-sdk/issues"
   },
   "homepage": "https://github.com/EpicentralLabs/solana-options-standard-sdk#readme",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check"
